@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def new
+		@project = Project.new
 	end
 
 	def create
@@ -16,7 +17,7 @@ class ProjectsController < ApplicationController
 		if @project.save
 			redirect_to @project
 		else
-			redirect_to new_project_path
+			render 'new'
 		end
 	end
 
