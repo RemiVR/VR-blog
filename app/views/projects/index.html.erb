@@ -5,8 +5,9 @@
 		<h2 class="title"> <%= project.title %> </h2>
 		<p class="description"> <%= project.description %> </p>
 		<p class="date"> <%= project.created_at.strftime("%B, %d, %Y") %> </p>
-	<%= link_to "Read more...", project%>
+		<p>	<%= link_to "Read more...", project%></p>
 	</div>
 <% end %>
+
 
 <%= link_to("New Project", new_project_path)%>
