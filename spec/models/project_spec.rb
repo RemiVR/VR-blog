@@ -1,21 +1,41 @@
 require 'rails_helper'
 
-describe Project do
-	it "has a valid factory" do
-		FactoryGirl.build(:project).should be_valid
-	end
+RSpec.describe Project do
 
-	it "it is invalid without title" do
-		FactoryGirl.build(:project, title: nil).should_not be_valid
-	end
-
-	it "it is invalid without link" do 
-		FactoryGirl.build(:project, link: nil).should_not be_valid
+	it "is valid with title, description and link" do
+		project = Project.new(title: "bubu", description: "this is bubu", link: "bubu.com")
+		expect(project).to be_valid
 	end
 	
-	it "it is invalid withoud description" do
-		FactoryGirl.build(:project, description: nil).should be_valid
+	context "" do
+		it "is invalid without title"	do
+			factory = FactoryGirl.build(:project)
+
+			project = Project.new(title: nil)
+
+			# expect(project).to validate_presence_of(:title)
+			# FactoryGirl.build(:project, title: nil).should_not be_valid
+			expect(project).not_to be_valid
+		end
+
+
+		it "is invalid without description" do
+			project = Project.new(description: nil)
+			expect(project).to validate_presence_of(:description)
+		end
+
+		it "is invalid without link"
 	end
 
-	it "returns title as string"
+	it "should have unique link"
+
+	# it "is invalid without link" do 
+	# 	FactoryGirl.build(:project, link: nil).should_not be_valid
+	# end
+	
+	# it "is invalid withoud description" do
+	# 	FactoryGirl.build(:project, description: nil).should_not be_valid
+	# end
+
+
 end
