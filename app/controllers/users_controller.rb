@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
 
+	load_and_authorize_resource
+
 	def index
 			@users = User.all
 	end	
 
 	def new
-		@user = User.new
 	end
 
 	def create
-		@user = User.new user_params
+		@user = User.new(user_params)
 		if @user.save
+			# session[:user_id] = @user.id
 			redirect_to users_path
 		else
 			render 'new'
@@ -22,7 +24,6 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
 	end
 
 	def update
