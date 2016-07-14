@@ -12,12 +12,6 @@
  *
  *= require_tree .
  *= require_self
+
  */
-
-*{ 
-	text-align: center;
-}
-
-.unauthorized{
-	color: red;
-}
+ @import "bootstrap";

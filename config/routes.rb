@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+get 'manager' => 'managers#index'
+
 root 'projects#index'
 
 get 'login' => 'sessions#new'

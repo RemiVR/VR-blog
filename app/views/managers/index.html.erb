@@ -1,0 +1,16 @@
+<h1>Manage</h1>
+
+<div class="dropdown">
+	<button class="dropbtn" disabled>Projects</button>
+	<div class="dropdown-content">
+		<% list_of_projects.each do |project| %>
+			<%= link_to project.title, project_path(project) %>
+		<% end %>
+	</div>
+</div>
+
+<% unless current_user.nil?%>
+	<button class="dropbtn">
+		<%= link_to current_user.name, user_path(current_user), class: "user-link"%>
+	</button>
+<% end %>

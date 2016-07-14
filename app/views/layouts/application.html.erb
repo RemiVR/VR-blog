@@ -3,26 +3,41 @@
 <head>
   <title>VRBlog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<%= display_login_link %>
+				<% if current_user%>
+					<%= current_user.name %>
+				<% end %>
+				
+				<h1>Menu</h1>
+					<ul>
+						<li>Home</li>
+						<li>Projects</li>
+						<li>About me</li>
+					</ul>
+			</div>
+			<div class="col-md-9">
+				
+				<h1 class="unauthorized"> <%= flash[:alert] %> </h1>
 
 
-<h1 class="unauthorized"> <%= flash[:alert] %> </h1>
-
-<%= display_login_link %>
 
 
-<% if current_user%>
-	<%= current_user.name %>
-	<%= current_user.id %>
-<% end %>
+				<%= yield %>
 
-<%= yield %>
+				<p> <%= link_to "HOME", root_url%> </p>
 
- <%= current_user.id unless current_user.nil? %>
+				<%= link_to "Users", users_path %>
 
-<p> <%= link_to "HOME", root_url%> </p>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
